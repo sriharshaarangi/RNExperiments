@@ -1,6 +1,9 @@
 import React from 'react';
 function LargeComponentWrapper() {
-  const Component = require(/* webpackChunkName: "largeComponent" */ './LargeComponent');
+  const Component = import(
+    /* webpackChunkName: "largeComponent" */ './LargeComponent'
+  );
+  // @ts-ignore
   return <Component />;
 }
 export default LargeComponentWrapper;
