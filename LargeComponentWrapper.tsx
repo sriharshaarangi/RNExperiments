@@ -1,10 +1,13 @@
-import React from "react";
+import React from 'react';
+import {Text} from 'react-native';
 function LargeComponentWrapper() {
-
-  const LazyLargeComponent = require('./LargeComponent').default;
-
+  const LazyLargeComponent = React.lazy(
+    () => import(/* webpackChunkName: "largeComponent" */ './LargeComponent'),
+  );
   return (
-    <LazyLargeComponent />
+    <React.Suspense fallback={<Text>Loading Remote Module...</Text>}>
+      <LazyLargeComponent />
+    </React.Suspense>
   );
 }
 export default LargeComponentWrapper;
