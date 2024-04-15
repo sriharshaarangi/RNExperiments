@@ -59,6 +59,7 @@ function App(): JSX.Element {
   useEffect(() => {
     console.log('Fully drawn now');
   }, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
