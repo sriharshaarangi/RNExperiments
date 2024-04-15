@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from "react";
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -56,6 +56,10 @@ function Section({children, title}: SectionProps): JSX.Element {
 }
 
 function App(): JSX.Element {
+  useEffect(() => {
+    console.log('Fully drawn now');
+  }, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
