@@ -1,4 +1,6 @@
 {
   "name": "RNExperiments",
-  "displayName": "RNExperiments"
+  "displayName": "RNExperiments",
+  "localChunks": [],
+  "remoteChunks": ["LargeComponent_tsx"]
 }
