@@ -5,13 +5,15 @@
 import {AppRegistry} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
-import LargeComponentWrapper from './LargeComponentWrapper';
+// import LargeComponentWrapper from './LargeComponentWrapper';
+import SecondApp from './SecondApp';
 
 AppRegistry.registerComponent(appName, () => App);
-AppRegistry.registerComponent(
-  'LargeComponentWrapper',
-  () => LargeComponentWrapper,
-);
+AppRegistry.registerComponent("RNExperimentsSecond", () => SecondApp);
+// AppRegistry.registerComponent(
+//   'LargeComponentWrapper',
+//   () => LargeComponentWrapper,
+// );
 
 function logChunks(message, maxChunkSize = 1000) {
   const chunks = [];
