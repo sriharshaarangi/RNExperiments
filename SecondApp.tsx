@@ -7,10 +7,12 @@
 
 import React, { useEffect } from "react";
 import type {PropsWithChildren} from 'react';
+import { useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
+  Button,
   StyleSheet,
   Text,
   useColorScheme,
@@ -25,6 +27,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import LargeComponentWrapper from "./LargeComponentWrapper";
+
 // import LargeComponent from "./LargeComponent";
 
 type SectionProps = PropsWithChildren<{
@@ -62,6 +65,11 @@ function App(): JSX.Element {
     console.log('Fully drawn now');
   }, []);
   const isDarkMode = useColorScheme() === 'dark';
+  const [componentLoaded, setComponentLoaded] = useState(false);
+  const loadComponent = () => {
+    setComponentLoaded(true);
+    // Optionally add platform-specific code to measure memory usage here
+  };
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -77,27 +85,15 @@ function App(): JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
-        <LargeComponentWrapper />
+        <Section title="Large component load">
+          <Button
+            title="Load Large Component"
+            onPress={loadComponent}
+            color="blue"
+          />
+          {componentLoaded && <LargeComponentWrapper />}
+        </Section>
         {/*<LargeComponent />*/}
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
       </ScrollView>
     </SafeAreaView>
   );
